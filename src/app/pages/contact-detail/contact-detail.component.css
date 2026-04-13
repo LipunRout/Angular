@@ -1,0 +1,46 @@
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap');
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:host{display:block}
+body,:host{font-family:'DM Sans',sans-serif;background:#f7f5f0;color:#1a1a18;min-height:100vh;-webkit-font-smoothing:antialiased}
+.page{min-height:100vh;background:#f7f5f0;animation:page-in .4s cubic-bezier(.22,1,.36,1) both}
+@keyframes page-in{from{opacity:0;transform:translateX(16px)}to{opacity:1;transform:translateX(0)}}
+.topbar{display:flex;align-items:center;justify-content:space-between;padding:0 2rem;height:64px;border-bottom:1px solid #e8e4dc;background:#f7f5f0;position:sticky;top:0;z-index:50}
+.back-btn{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:500;color:#555;text-decoration:none;padding:7px 12px;border-radius:10px;transition:background .15s,color .15s}
+.back-btn:hover{background:#eee;color:#1a1a18}
+.topbar-actions{display:flex;align-items:center;gap:8px}
+.btn-danger{padding:7px 16px;border-radius:100px;font-size:13px;font-weight:500;border:1px solid #fecaca;background:#fff;color:#dc2626;cursor:pointer;transition:all .15s}
+.btn-danger:hover{background:#fef2f2;border-color:#dc2626}
+.confirm-row{display:flex;align-items:center;gap:8px}
+.confirm-text{font-size:13px;color:#888}
+.btn-confirm-yes{padding:7px 14px;border-radius:100px;font-size:13px;font-weight:500;border:none;background:#dc2626;color:white;cursor:pointer;transition:background .15s}
+.btn-confirm-yes:hover{background:#b91c1c}
+.btn-confirm-no{padding:7px 14px;border-radius:100px;font-size:13px;font-weight:500;border:1px solid #e0dbd2;background:#fff;color:#555;cursor:pointer}
+.content{max-width:600px;margin:0 auto;padding:2.5rem 1.5rem}
+.hero{display:flex;align-items:center;gap:20px;margin-bottom:2.5rem;flex-wrap:wrap}
+.avatar-lg{width:72px;height:72px;border-radius:20px;display:grid;place-items:center;font-family:'Syne',sans-serif;font-size:22px;font-weight:700;flex-shrink:0}
+.avatar-lg[data-tag="work"]{background:#dbeafe;color:#1e40af}
+.avatar-lg[data-tag="personal"]{background:#d1fae5;color:#065f46}
+.avatar-lg[data-tag="family"]{background:#fce7f3;color:#9d174d}
+.avatar-lg[data-tag="other"]{background:#f3f4f6;color:#374151}
+.hero-name{font-family:'Syne',sans-serif;font-size:28px;font-weight:700;letter-spacing:-.02em;margin-bottom:6px}
+.hero-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.hero-company{font-size:14px;color:#777}
+.tag-badge{font-family:'DM Mono',monospace;font-size:10px;font-weight:500;letter-spacing:.06em;padding:3px 10px;border-radius:100px}
+.tag-badge[data-tag="work"]{background:#dbeafe;color:#1e40af}
+.tag-badge[data-tag="personal"]{background:#d1fae5;color:#065f46}
+.tag-badge[data-tag="family"]{background:#fce7f3;color:#9d174d}
+.tag-badge[data-tag="other"]{background:#f3f4f6;color:#374151}
+.info-section{margin-bottom:1.75rem}
+.section-label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#aaa;margin-bottom:10px}
+.info-card{background:#fff;border:1px solid #ede9e1;border-radius:16px;overflow:hidden}
+.info-row{display:flex;align-items:center;gap:14px;padding:14px 16px}
+.info-divider{height:1px;background:#f0ece4;margin:0 16px}
+.info-icon{width:32px;height:32px;border-radius:9px;background:#f7f5f0;display:grid;place-items:center;color:#888;flex-shrink:0}
+.info-body{flex:1}
+.info-label{display:block;font-size:11px;color:#aaa;margin-bottom:2px;font-family:'DM Mono',monospace}
+.info-value{font-size:14px;font-weight:500;color:#1a1a18}
+.info-value.link{color:#2e8b6e;text-decoration:none}
+.info-value.link:hover{text-decoration:underline}
+.notes-card{background:#fff;border:1px solid #ede9e1;border-radius:16px;padding:16px;font-size:14px;color:#555;line-height:1.6}
+.added-on{font-family:'DM Mono',monospace;font-size:11px;color:#bbb;text-align:center;margin-top:2rem}
+@media(max-width:600px){.topbar{padding:0 1rem}.content{padding:1.5rem 1rem}.hero-name{font-size:22px}}

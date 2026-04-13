@@ -1,0 +1,80 @@
+<div class="page">
+  <header class="topbar">
+    <a class="back-btn" routerLink="/contacts">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+        <path d="M10 3L5 8l5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      Cancel
+    </a>
+    <span class="topbar-title">New contact</span>
+    <button class="btn-save" (click)="onSubmit()">Save</button>
+  </header>
+
+  <div class="content">
+    <div class="preview-hero">
+      <div class="avatar-preview" [attr.data-tag]="f['tag'].value">{{ previewInitials }}</div>
+      <div class="preview-name">
+        <span *ngIf="f['firstName'].value || f['lastName'].value; else namePlaceholder">
+          {{ f['firstName'].value }} {{ f['lastName'].value }}
+        </span>
+        <ng-template #namePlaceholder><span class="placeholder-name">Your new contact</span></ng-template>
+      </div>
+    </div>
+
+    <form [formGroup]="form" (ngSubmit)="onSubmit()" novalidate>
+      <div class="form-section">
+        <h2 class="section-label">Basic info</h2>
+        <div class="form-card">
+          <div class="field-row">
+            <div class="field" [class.error]="submitted && f['firstName'].errors">
+              <label class="field-label">First name *</label>
+              <input class="field-input" formControlName="firstName" placeholder="Ada" autocomplete="off" />
+              <span class="err-msg" *ngIf="submitted && f['firstName'].errors?.['required']">Required</span>
+              <span class="err-msg" *ngIf="submitted && f['firstName'].errors?.['minlength']">Min 2 chars</span>
+            </div>
+            <div class="field" [class.error]="submitted && f['lastName'].errors">
+              <label class="field-label">Last name *</label>
+              <input class="field-input" formControlName="lastName" placeholder="Lovelace" autocomplete="off" />
+              <span class="err-msg" *ngIf="submitted && f['lastName'].errors?.['required']">Required</span>
+            </div>
+          </div>
+          <div class="field-divider"></div>
+          <div class="field" [class.error]="submitted && f['email'].errors">
+            <label class="field-label">Email *</label>
+            <input class="field-input" type="email" formControlName="email" placeholder="ada@example.com" autocomplete="off" />
+            <span class="err-msg" *ngIf="submitted && f['email'].errors?.['required']">Required</span>
+            <span class="err-msg" *ngIf="submitted && f['email'].errors?.['email']">Invalid email</span>
+          </div>
+          <div class="field-divider"></div>
+          <div class="field">
+            <label class="field-label">Phone</label>
+            <input class="field-input" type="tel" formControlName="phone" placeholder="+91 98765 43210" autocomplete="off" />
+          </div>
+          <div class="field-divider"></div>
+          <div class="field">
+            <label class="field-label">Company</label>
+            <input class="field-input" formControlName="company" placeholder="Acme Corp" autocomplete="off" />
+          </div>
+        </div>
+      </div>
+
+      <div class="form-section">
+        <h2 class="section-label">Tag</h2>
+        <div class="tag-grid">
+          <label class="tag-option" *ngFor="let tag of tags"
+            [class.selected]="f['tag'].value === tag" [attr.data-tag]="tag">
+            <input type="radio" formControlName="tag" [value]="tag" style="display:none" />
+            {{ tag }}
+          </label>
+        </div>
+      </div>
+
+      <div class="form-section">
+        <h2 class="section-label">Notes</h2>
+        <textarea class="notes-input" formControlName="notes" placeholder="Any notes about this contact…" rows="3"></textarea>
+      </div>
+
+      <button type="submit" class="btn-submit">Save contact</button>
+    </form>
+  </div>
+</div>
